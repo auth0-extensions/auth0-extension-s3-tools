@@ -42,7 +42,8 @@ S3StorageContext.prototype.read = function() {
   const ctx = this;
   return new Promise(function(resolve, reject) {
     const params = {
-      Key: ctx.options.path
+      Key: ctx.options.path,
+      Bucket: ctx.options.bucket
     };
 
     ctx.s3.getObject(params, function(err, response) {
@@ -74,6 +75,7 @@ S3StorageContext.prototype.write = function(data) {
     try {
       const params = {
         Key: ctx.options.path,
+        Bucket: ctx.options.bucket,
         Body: JSON.stringify(data, null, 2),
         ContentType: 'application/json'
       };
