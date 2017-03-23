@@ -46,7 +46,7 @@ S3StorageContext.prototype.read = function() {
       Bucket: ctx.options.bucket
     };
 
-    ctx.s3.getObject(params, function(err, response) {
+    ctx.s3.getObject(params, function getObject(err, response) {
       try {
         if (err) {
           if (err.code === 'NoSuchKey') {
@@ -80,7 +80,7 @@ S3StorageContext.prototype.write = function(data) {
         ContentType: 'application/json'
       };
 
-      ctx.s3.putObject(params, (err) => {
+      ctx.s3.putObject(params, function putObject(err) {
         if (err) {
           return reject(err);
         }
