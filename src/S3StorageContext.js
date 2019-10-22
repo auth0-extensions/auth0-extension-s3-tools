@@ -25,10 +25,16 @@ function S3StorageContext(options) {
     throw new ArgumentError('The \'keySecret\' property is required when configuring the S3StorageContext.');
   }
 
-  this.s3 = new AWS.S3({
+  let options = {
     signatureVersion: 'v4',
     params: { Bucket: options.bucket }
-  });
+  };
+
+  if (options.awsRegion){
+    options.region = options.awsRegion
+  }
+
+  this.s3 = new AWS.S3(options);
   this.s3.config.credentials = new AWS.Credentials(
     options.keyId,
     options.keySecret
