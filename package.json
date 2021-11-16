@@ -40,7 +40,7 @@
   "homepage": "https://github.com/auth0-extensions/auth0-extension-s3-tools#readme",
   "dependencies": {
     "auth0-extension-tools": "^0.9.0",
-    "aws-sdk": "2.5.3",
+    "aws-sdk": "2.814.0",
     "bluebird": "3.4.1"
   }
 }
